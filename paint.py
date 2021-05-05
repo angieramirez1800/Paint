@@ -21,7 +21,7 @@ def square(start, end): # Función de cuadrado
 
     end_fill() #Para rellenar la figura justo después de terminar el loop 
 
-def circle(start, end): #Función del círculo 
+def circle(start, end): # Función del círculo 
     "Draw circle from start to end."
     pass  # TODO
 
