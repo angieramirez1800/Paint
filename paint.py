@@ -1,5 +1,6 @@
 from turtle import *# Importa la herramienta turtle
 from freegames import vector # Importa la biblioteca freegames
+from math import sqrt # Importa la funcion sqrt
 from math import pi
 def line(start, end):# Función para dibujar una línea
     "Draw line from start to end."# Comentario de función que explica lo que hace 
@@ -7,6 +8,7 @@ def line(start, end):# Función para dibujar una línea
     goto(start.x, start.y)# Mover el lápiz a la coordenada (dupla) que marca el cursor al inicio  
     down()# Para empezar a dibujar (bajar el lápiz)
     goto(end.x, end.y) # Mover el lápiz a la coordenada que marca el cursor al final 
+
 
 def square(start, end):# Función de cuadrado
     "Draw square from start to end."# Explicación de la función (?)
@@ -33,13 +35,39 @@ def circle(start, end):# Función del círculo
         left(1)# Hacer girar el lápiz a 1 grado
     end_fill()# Rellena figura 
       
-def rectangle(start, end):
+def rectangle(start, end): #Función para crear un rectángulo
     "Draw rectangle from start to end."
-    pass  # TODO
+    up() # Para dejar de dibujar (levantar el lápiz)
+    goto(start.x, start.y) # Mover el lápiz a la coordenada start
+    down() # Para comenzar a dibujar (bajar el lápiz)
+    begin_fill() # Para activar la función de rellenar la figura
 
-def triangle(start, end):
+    for count in range(4): # Ciclo para las 4 líneas
+        # Cuando count es 0 o 2, la longitud es diferencia en x
+        # Cuando count es 1 o 3, la longitud es diferencia en y
+        if count % 2 == 0:
+            forward(end.x - start.x) # Mueve el lápiz y dibuja la línea
+        else:
+            forward(end.y - start.y) # Mueve el lápiz y dibuja la línea
+        left(90) # Hace girar el lápiz 90 grados a la izquierda
+    
+    end_fill() # Terminar de rellenar la figura una vez está completa
+
+def triangle(start, end): # Función para dibujar un triángulo
     "Draw triangle from start to end."
-    pass  # TODO
+    setheading(0) # Inicializa el angulo como 0
+    up() # Para dejar de dibujar (levantar el lápiz)
+    goto(start.x, start.y) # Mover el lápiz a la coordenada start
+    begin_fill() # Para activar la función de rellenar la figura
+    down() # Para comenzar a dibujar (bajar el lápiz)
+    goto(end.x, end.y) # Mover el lápiz a la coordenada end
+    left(135) # Cambia la orientacion del lapiz 135 grados a la izquierda
+    # Calcula la distancia entre los puntos start y end
+    dist = sqrt((end.x - start.x) ** 2 + (end.y - start.y) ** 2)
+    forward(dist) # Mover el lápiz una distancia dist
+    goto(start.x, start.y) # Mover el lápiz a la coordenada start
+    end_fill() # Terminar de rellenar la figura una vez que está completa
+    setheading(0) # Reiniciar el angulo como 0
 
 def tap(x, y):# Función para empezar a dibujar desde una coordenada x,y 
     "Store starting point or draw shape."# Explicación de la función
