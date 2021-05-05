@@ -21,6 +21,26 @@ def square(start, end):# Función de cuadrado
 
     end_fill()#Para rellenar la figura justo después de terminar el loop 
 
+def line(start, end):# Función para dibujar una línea
+    "Draw line from start to end." # Comentario de función que explica lo que hace 
+    up()# Para dejar a dibujar (levantar el lápiz)
+    goto(start.x, start.y)# Mover el lápiz a la coordenada (dupla) que marca el cursor al inicio  
+    down()# Para empezar a dibujar (bajar el lápiz)
+    goto(end.x, end.y)# Mover el lápiz a la coordenada que marca el cursor al final 
+
+def square(start, end):# Función de cuadrado
+    "Draw square from start to end." # Explicación de la función (?)
+    up()# Para dejar a dibujar (levantar el lápiz)
+    goto(start.x, start.y)# Mover el lápiz a la coordenada que marca el cursor al inicio 
+    down() # Para empezar a dibujar (bajar el lápiz)
+    begin_fill()# Para activar la función de rellenar la figura 
+
+    for count in range(4):# Para hacer un loop de 4 veces 
+        forward(end.x - start.x)# Para mover el lápiz y formar una línea las veces que indique el loop 
+        left(90)# Hacer girar el lápiz a 90 grados
+
+    end_fill()#Para rellenar la figura justo después de terminar el loop
+
 def circle(start, end):# Función del círculo 
     "Draw circle from start to end."
     up()# Para dejar a dibujar (levantar el lápiz)
@@ -44,7 +64,6 @@ def triangle(start, end):
 def tap(x, y):# Función para empezar a dibujar desde una coordenada x,y 
     "Store starting point or draw shape."# Explicación de la función
     start = state['start']# Se define una variable con un diccionario que guarda una coordenada 
-
 
     if start is None:# Opción de si es la primera vez que se dibuja
         state['start'] = vector(x, y)# Se guarda la primera coordenada
