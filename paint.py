@@ -1,10 +1,18 @@
+# Código modificado
+# David Damián Galán
+# Angélica Sofía Ramírez Porras
 from turtle import * # Importa la herramienta turtle
 from freegames import vector # Importa la biblioteca freegames
 from math import sqrt # Importa la funcion sqrt
 from math import pi # Importa la constante pi
 
+
 def line(start, end): # Función para dibujar una línea
-    "Draw line from start to end." # Comentario de función que explica lo que hace 
+    """
+    Dibuja una línea de acuerdo a dos puntos marcados por dos clicks
+    start = punto de inicio 
+    end = punto de fin 
+    """
     up() # Para dejar a dibujar (levantar el lápiz)
     # Mover el lápiz a la coordenada (dupla) que marca el cursor al inicio
     goto(start.x, start.y)
@@ -12,8 +20,13 @@ def line(start, end): # Función para dibujar una línea
     # Mover el lápiz a la coordenada que marca el cursor al final 
     goto(end.x, end.y)
 
+    
 def square(start, end): # Función de cuadrado
-    "Draw square from start to end."
+    """
+    Dibuja un cuadrado de acuerdo a dos puntos marcados por dos clicks.
+    start = punto de inicio 
+    end = punto de fin 
+    """
     up() # Para dejar a dibujar (levantar el lápiz)
     # Mover el lápiz a la coordenada que marca el cursor al inicio
     goto(start.x, start.y)
@@ -27,22 +40,34 @@ def square(start, end): # Función de cuadrado
 
     end_fill() # Para rellenar la figura justo después de terminar el loop
 
+    
 def circle(start, end): # Función del círculo 
-    "Draw circle from start to end."
+    """
+    Dibuja un círculo de acuerdo a dos puntos marcados por dos clicks.
+    start = punto de inicio 
+    end = punto de fin 
+    """
     up() # Para dejar a dibujar (levantar el lápiz)
     diameter = end.x - start.x # Define el diámetro con coordenadas
     # Mover el lápiz a la coordenada que marca el cursor al inicio
     goto(start.x,start.y)
     down() # Para comenzar a dibujar (bajar el lápiz)
     begin_fill() # Para activar la función de rellenar la figura
+    
     for count in range(360):# Para hacer un loop de 360 veces
         # Para mover el lápiz y formar una línea las veces que indique el loop
-        forward((diameter * pi) / 360)
+        forward((diameter * pi) / 360) # traza la circunferencia
         left(1) # Hacer girar el lápiz a 1 grado
+    
     end_fill() # Rellena figura 
+    
       
 def rectangle(start, end): # Función para crear un rectángulo
-    "Draw rectangle from start to end."
+    """
+    Dibuja un rectángulo de acuerdo a dos puntos marcados por dos clicks.
+    start = punto de inicio 
+    end = punto de fin 
+    """
     up() # Para dejar de dibujar (levantar el lápiz)
     goto(start.x, start.y) # Mover el lápiz a la coordenada start
     down() # Para comenzar a dibujar (bajar el lápiz)
@@ -59,8 +84,13 @@ def rectangle(start, end): # Función para crear un rectángulo
     
     end_fill() # Terminar de rellenar la figura una vez está completa
 
+    
 def triangle(start, end): # Función para dibujar un triángulo
-    "Draw triangle from start to end."
+    """
+    Dibuja un triángulo de acuerdo a dos puntos marcados por dos clicks.
+    start = punto de inicio 
+    end = punto de fin
+    """
     setheading(0) # Inicializa el angulo como 0
     up() # Para dejar de dibujar (levantar el lápiz)
     goto(start.x, start.y) # Mover el lápiz a la coordenada start
@@ -75,8 +105,13 @@ def triangle(start, end): # Función para dibujar un triángulo
     end_fill() # Terminar de rellenar la figura una vez que está completa
     setheading(0) # Reiniciar el angulo como 0
 
+    
 def tap(x, y): # Función para empezar a dibujar desde una coordenada x, y
-    "Store starting point or draw shape."# Explicación de la función
+    """
+    Guarda el punto de inicio o dibuja la figura 
+    x = punto en eje x 
+    y = punto en eje y 
+    """
     # Se define una variable con un diccionario que guarda una coordenada
     start = state['start']
 
@@ -88,26 +123,33 @@ def tap(x, y): # Función para empezar a dibujar desde una coordenada x, y
         shape(start, end) # variable para llamar las funciones de las figuras
         state['start'] = None # Para reiniciar y dibujar algo diferente
 
+        
 def store(key, value): # Función donde se guarda la figura que se va a dibujar
-    "Store value in state at key."
-    state[key] = value # Varaible que guarda la figura en state
-
+    """
+    Guarda el valor de state.
+    key = figura 
+    value = guarda qué figura se dibuja 
+    """
+    state[key] = value # Variable que guarda la figura en state
 # Guarda las coordenadas (start) y la figura (shape)
 state = {'start': None, 'shape': line}
 setup(420, 420, 370, 0) # Para las medidas de la ventana/pad de dibujo
 onscreenclick(tap) # Para llamar tap desde los clicks del mouse
-listen() # Interfaz 
+
+listen() # Interfaz, para recolectar eventos (teclas presionadas)  
 onkey(undo, 'u') # La instrucción para deshacer
-# A partir de esta línea es para configurar color y figuras
+# A partir de esta línea es para configurar color 
 onkey(lambda: color('black'), 'K')
 onkey(lambda: color('white'), 'W')
 onkey(lambda: color('green'), 'G')
 onkey(lambda: color('blue'), 'B')
 onkey(lambda: color('red'), 'R')
 onkey(lambda: color('yellow'),'Y') # Color amarillo añadido por Angie
+# A partir de esta línea es para configurar figuras
 onkey(lambda: store('shape', line), 'l')
 onkey(lambda: store('shape', square), 's')
 onkey(lambda: store('shape', circle), 'c')
 onkey(lambda: store('shape', rectangle), 'r')
 onkey(lambda: store('shape', triangle), 't')
+
 done()
