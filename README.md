@@ -7,7 +7,9 @@ Originalmente lo que podía hacer el código era:
   
   * Dibujar cuadrados presionando s
   
-  * Cambiar color sólo azul, negro, blanco, verde y rojo presionando B,K,W,G y R respectivamente
+  * Cambiar color sólo azul, negro, blanco, verde y rojo presionando B, K, W, G y R respectivamente
+
+  * El primer click marca el punto de inicio y el segundo el punto de fin
   
  Los cambios que hicimos fueron los siguientes: 
  
