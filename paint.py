@@ -121,7 +121,7 @@ def tap(x, y):
         shape = state['shape']  # Traza la figura indicada
         # Para terminar de dibujar en el punto donde inició
         end = vector(x, y)
-        # variable para llamar las funciones de las figuras
+        # Variable para llamar las funciones de las figuras
         shape(start, end)
         state['start'] = None  # Para reiniciar y dibujar algo diferente
 
@@ -156,4 +156,5 @@ onkey(lambda: store('shape', circle), 'c')
 onkey(lambda: store('shape', rectangle), 'r')
 onkey(lambda: store('shape', triangle), 't')
 
+# Termina el programa
 done()
